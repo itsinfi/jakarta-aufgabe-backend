@@ -17,9 +17,10 @@
 		<project.report.sourceEncoding>UTF-8</project.report.sourceEncoding>
 		<maven.compiler.release>17</maven.compiler.release>
 		<jakartaee-api.version>10.0.0</jakartaee-api.version>
+		<wildfly.version>33.0.2.Final</wildfly.version>
 		<compiler-plugin.version>3.13.0</compiler-plugin.version>
 		<war-plugin.version>3.4.0</war-plugin.version>
-		<cargo.version>1.10.15</cargo.version>
+		<wildfly-plugin.version>5.0.1.Final</wildfly-plugin.version>
 	</properties>
 
 	<dependencies>
@@ -47,18 +48,14 @@
 				</configuration>
 			</plugin>
 
-			<!-- Execute 'mvn clean package cargo:run' to run the application. -->
+			<!-- Execute 'mvn clean package wildfly:dev' to run the application. -->
 			<plugin>
-				<groupId>org.codehaus.cargo</groupId>
-				<artifactId>cargo-maven3-plugin</artifactId>
-				<version>${cargo.version}</version>
+				<groupId>org.wildfly.plugins</groupId>
+				<artifactId>wildfly-maven-plugin</artifactId>
+				<version>${wildfly-plugin.version}</version>
 				<configuration>
-					<container>
-						<containerId>glassfish7x</containerId>
-						<zipUrlInstaller>
-							<url>https://repo.maven.apache.org/maven2/org/glassfish/main/distributions/web/7.0.17/web-7.0.17.zip</url>
-						</zipUrlInstaller>
-					</container>
+					<version>${wildfly.version}</version>
+					<server-config>standalone.xml</server-config>
 				</configuration>
 			</plugin>
 		</plugins>
