@@ -23,10 +23,10 @@ public class CreateCatDto {
     public void setAge(int age) {
         this.age = age;
     }
-    public boolean isVegan() {
+    public boolean getIsVegan() {
         return isVegan;
     }
-    public void setVegan(boolean isVegan) {
+    public void setIsVegan(boolean isVegan) {
         this.isVegan = isVegan;
     }
 }

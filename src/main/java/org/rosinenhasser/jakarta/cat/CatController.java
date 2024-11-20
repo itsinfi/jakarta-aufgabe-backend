@@ -1,7 +1,7 @@
 package org.rosinenhasser.jakarta.cat;
 
 import java.util.List;
-import java.util.logging.Logger;
+// import java.util.logging.Logger;
 
 import org.rosinenhasser.jakarta.cat.dto.CreateCatDto;
 import org.rosinenhasser.jakarta.cat.dto.UpdateCatDto;
@@ -23,7 +23,7 @@ public class CatController {
 	@Inject
 	private CatService catService;
 
-	private static final Logger logger = Logger.getLogger(CatController.class.getName());
+	// private static final Logger logger = Logger.getLogger(CatController.class.getName());
 
 	@GET
 	@Path("details")
@@ -46,7 +46,7 @@ public class CatController {
 		cat.setName(createCatDto.getName());
 		cat.setSpecies(createCatDto.getSpecies());
 		cat.setAge(createCatDto.getAge());
-		cat.setIsVegan(createCatDto.isVegan());
+		cat.setIsVegan(createCatDto.getIsVegan());
 		catService.create(cat);
 	}
 
@@ -58,7 +58,7 @@ public class CatController {
 		cat.setName(updateCatDto.getName());
 		cat.setSpecies(updateCatDto.getSpecies());
 		cat.setAge(updateCatDto.getAge());
-		cat.setIsVegan(updateCatDto.isVegan());
+		cat.setIsVegan(updateCatDto.getIsVegan());
 		catService.update(cat);
 	}
 
