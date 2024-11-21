@@ -28,7 +28,6 @@ public class CatControllerServlet extends HttpServlet {
             System.out.println(request);
             System.out.println(response);
             // get cats
-            CatService catService = new CatService();
             List<CatEntity> catEntities = new ArrayList<CatEntity>();
             catEntities = catService.readAll();
 
