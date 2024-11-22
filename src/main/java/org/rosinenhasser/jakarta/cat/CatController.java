@@ -1,11 +1,11 @@
-package org.rosinenhasser.jakarta.CatController;
+package org.rosinenhasser.jakarta.cat;
 
+import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 
-import org.rosinenhasser.jakarta.cat.CatEntity;
-import org.rosinenhasser.jakarta.cat.CatService;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import jakarta.inject.Inject;
 import jakarta.servlet.ServletException;
@@ -19,6 +19,8 @@ public class CatController extends HttpServlet {
 
     @Inject
     private CatService catService; 
+
+    private final ObjectMapper objectMapper = new ObjectMapper();
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -45,9 +47,10 @@ public class CatController extends HttpServlet {
 
             // JSON-Body der Anfrage lesen
             System.out.println(request);
-
-        // Hier kannst du mit dem empfangenen Objekt arbeiten
-        // Beispiel: System.out.println(myObject);
+            BufferedReader reader = request.getReader();
+            CatEntity cat = objectMapper.readValue(reader, CatEntity.class);
+            // CatEntity cat = objectMapper.readValue(reader, CatEntity.class);
+            catService.create(cat);
 
             // Writer zum Schreiben der Antwort holen
             PrintWriter out = response.getWriter();
