@@ -36,7 +36,8 @@ public class CatController extends HttpServlet {
             // Writer zum Schreiben der Antwort holen
             PrintWriter out = response.getWriter();
             // JSON-Ausgabe generieren
-            out.println(catEntities);
+            var output = objectMapper.writeValueAsString(catEntities);
+            out.println(output);
         }
     
     @Override
