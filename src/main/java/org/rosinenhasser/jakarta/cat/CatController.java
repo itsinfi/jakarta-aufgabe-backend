@@ -36,6 +36,24 @@ public class CatController extends HttpServlet {
             // JSON-Ausgabe generieren
             out.println(catEntities);
         }
+    
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+        throws ServletException, IOException {
+            // Setzen des Inhalts-Typs der Antwort (z.B. HTML)
+            response.setContentType("application/json");
+
+            // JSON-Body der Anfrage lesen
+            System.out.println(request);
+
+        // Hier kannst du mit dem empfangenen Objekt arbeiten
+        // Beispiel: System.out.println(myObject);
+
+            // Writer zum Schreiben der Antwort holen
+            PrintWriter out = response.getWriter();
+            // HTML-Ausgabe generieren
+            out.println(request);
+            }
 
         @Override
         protected void doDelete(HttpServletRequest request, HttpServletResponse response)
