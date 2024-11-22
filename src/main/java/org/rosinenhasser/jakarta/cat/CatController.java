@@ -14,11 +14,11 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-@WebServlet("/cats")
+@WebServlet("cats/")
 public class CatController extends HttpServlet {
 
     @Inject
-    private CatService catService;
+    private CatService catService; 
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -36,5 +36,17 @@ public class CatController extends HttpServlet {
             // JSON-Ausgabe generieren
             out.println(catEntities);
         }
+
+        @Override
+        protected void doDelete(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+                try {
+                    long id = Long.parseLong(request.getParameter("id"));
+                    catService.delete(id);
+                    response.getWriter().write("Deleted cat with id: " + id);
+                } catch (Exception e) {
+                    response.getWriter().write("Error deleting cat:" + e);
+                }
+            }
 
 }
