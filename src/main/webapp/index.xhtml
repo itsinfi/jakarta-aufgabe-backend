@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<h:head>
+    <title>CRUD</title>
+    <link rel="stylesheet" href="#{resource['css/styles.css']}"/>
+</h:head>
+<h:body>
+    <h1>CRUD</h1>
+
+    <br/>
+
+    <!-- Read All Cats -->
+    <h:panelGroup layout="block" styleClass="container">
+        <h2>Read All Cats</h2>
+        <ul>
+            <ui:repeat value="#{catManager.allCats}" var="cat">
+                <li>#{catManager.catToString(cat)}</li>
+            </ui:repeat>
+        </ul>
+    </h:panelGroup>
+
+    <br/>
+
+    <!-- Read Specific Cat -->
+    <h:form>
+        <h:panelGroup layout="block" styleClass="container">
+            <h2>Read Specific Cat</h2>
+            <h:panelGroup layout="block" styleClass="row">
+                <h:inputText value="#{catManager.specificCatId}" required="true" placeholder="id"/>
+                <h:outputText value="#{catManager.specificCatDetails}" style="margin-left: 10px;"/>
+                <h:commandButton value="Get" action="#{catManager.getCatDetails}" />
+            </h:panelGroup>
+        </h:panelGroup>
+    </h:form>
+
+    <br/>
+
+    <!-- Create Cat -->
+    <h:form>
+        <h:panelGroup layout="block" styleClass="container">
+            <h2>Create Cat</h2>
+            <h:panelGroup layout="block" styleClass="row">
+                <h:inputText value="#{catManager.newCat.name}" required="true" placeholder="name"/>
+                <h:inputText value="#{catManager.newCat.species}" required="true" placeholder="species"/>
+                <h:inputText value="#{catManager.newCat.age}" required="true" placeholder="age"/>
+                <h:selectOneMenu value="#{catManager.newCat.isVegan}">
+                    <f:selectItem itemValue="true" itemLabel="true"/>
+                    <f:selectItem itemValue="false" itemLabel="false"/>
+                </h:selectOneMenu>
+                <h:commandButton value="Create" action="#{catManager.createCat}" />
+            </h:panelGroup>
+        </h:panelGroup>
+    </h:form>
+
+    <br/>
+
+    <!-- Update Cat -->
+    <h:form>
+        <h:panelGroup layout="block" styleClass="container">
+            <h2>Update Cat</h2>
+            <h:panelGroup layout="block" styleClass="row">
+                <h:inputText value="#{catManager.updateCatId}" required="true" placeholder="id"/>
+                <h:inputText value="#{catManager.updateCat.name}" required="true" placeholder="name"/>
+                <h:inputText value="#{catManager.updateCat.species}" required="true" placeholder="species"/>
+                <h:inputText value="#{catManager.updateCat.age}" required="true" placeholder="age"/>
+                <h:selectOneMenu value="#{catManager.updateCat.isVegan}">
+                    <f:selectItem itemValue="true" itemLabel="true"/>
+                    <f:selectItem itemValue="false" itemLabel="false"/>
+                </h:selectOneMenu>
+                <h:commandButton value="Update" action="#{catManager.updateCat}" />
+            </h:panelGroup>
+        </h:panelGroup>
+    </h:form>
+
+    <br/>
+
+    <!-- Delete Cat -->
+    <h:form>
+        <h:panelGroup layout="block" styleClass="container">
+            <h2>Delete Cat</h2>
+            <h:panelGroup layout="block" styleClass="row">
+                <h:inputText value="#{catManager.deleteCatId}" required="true" placeholder="id"/>
+                <h:commandButton value="Delete" action="#{catManager.deleteCat}" />
+            </h:panelGroup>
+        </h:panelGroup>
+    </h:form>
+</h:body>
+</html>

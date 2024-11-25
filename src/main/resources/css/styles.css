@@ -1,0 +1,60 @@
+body {
+    
+    --bg1: #000e29;
+    --bg2: #0e1414;
+    --text: #d8d8d8;
+    --container: #00000030;
+    --primary: #0066ff;
+    
+    background: linear-gradient(var(--bg1), var(--bg2));
+    min-height: 100vh;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body, button, input, select {
+    color: var(--text);
+    font-size: 20px;
+}
+
+option {
+    background-color: var(--bg1);
+}
+
+button {
+    background-color: var(--primary);
+    border-radius: 30px;
+    outline: none;
+    border: none;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    width: 200px;
+    margin-left: auto;
+}
+
+input, select {
+    background-color: var(--container);
+    border: 2px solid var(--primary);
+    padding: 10px;
+    margin-right: 10px;
+    border-radius: 30px;
+    outline: none;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+}
+
+.container {
+    margin: 10px 40px;
+    background-color: var(--container);
+    padding: 20px;
+    border-radius: 30px;
+}
+
+h1 {
+    text-align: center;
+    font-size: 100px;
+    margin: 0;
+    font-style: italic;
+}
